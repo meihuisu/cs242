@@ -6,9 +6,9 @@ AC_INIT(CS242, 1.0.0, software@scec.org)
 AC_CONFIG_MACRO_DIRS([m4])
 AM_INIT_AUTOMAKE(foreign tar-pax)
 
-dnl
-dnl Dependencies
-dnl
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_MKDIR_P
 
 dnl Etree (Euclid)
 AC_ARG_ENABLE([etree],
@@ -89,11 +89,6 @@ AC_SUBST(with_proj_libdir)
 dnl
 dnl Command line tools
 dnl
-
-AC_PROG_CC
-AC_PROG_LIBTOOL
-AC_PROG_INSTALL
-AC_PROG_MKDIR_P
 
 dnl CURL (used to download model files)
 AC_PATH_PROG(CURL, curl)

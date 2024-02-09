@@ -17,6 +17,9 @@ install:
 	cp libcs242.a ${prefix}/lib
 	cp cs242.h ${prefix}/include
 
+libcs242.a: cs242_static.o
+	$(AR) rcs $@ $^
+
 libcs242.so: cs242.o 
 	$(CC) -shared $(AM_CCFLAGS) -o libcs242.so $^ $(AM_LDFLAGS)
 

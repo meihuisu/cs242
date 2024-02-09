@@ -50,7 +50,7 @@ int cs242_init(const char *dir, const char *label) {
         return FAIL;
 
     // Set up the iteration directory.
-    sprintf(cs242_data_directory, "%s/model/%s/data/%s/", dir, label, cs242_configuration->model_dir);
+    sprintf(cs242_data_directory, "%s/model/%s/data/%s", dir, label, cs242_configuration->model_dir);
 
     // Can we allocate the model, or parts of it, to memory. If so, we do.
     tempVal = cs242_try_reading_model(cs242_velocity_model);
@@ -481,9 +481,8 @@ int cs242_read_configuration(char *file, cs242_configuration_t *config) {
  * @param err The error string to print out to stderr.
  */
 void cs242_print_error(char *err) {
-    fprintf(stderr, "An error has occurred while executing cs242. The error was:\n\n");
-    fprintf(stderr, "%s", err);
-    fprintf(stderr, "\n\nPlease contact software@scec.org and describe both the error and a bit\n");
+    fprintf(stderr, "An error has occurred while executing cs242. The error was: %s\n",err);
+    fprintf(stderr, "\nPlease contact software@scec.org and describe both the error and a bit\n");
     fprintf(stderr, "about the computer you are running cs242 on (Linux, Mac, etc.).\n");
 }
 
@@ -536,7 +535,7 @@ int cs242_try_reading_model(cs242_model_t *model) {
         file_count++;
     }
 
-    sprintf(current_file, "%s/density.dat", cs242_data_directory);
+    sprintf(current_file, "%s/rho.dat", cs242_data_directory);
     if (access(current_file, R_OK) == 0) {
         model->rho = malloc(base_malloc);
         if (model->rho != NULL) {

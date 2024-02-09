@@ -8,6 +8,7 @@ AM_LDFLAGS = ${LDFLAGS}
 install:
 	mkdir -p ${prefix}/data
 	cp ./config ${prefix}/data
-	cp -R ./i* ${prefix}/data
+	cp -R ./cs242 ${prefix}/data
 	chmod +r ${prefix}/data/config
+	chmod -R og+r ${prefix}/data/cs242
 	chmod +r ${prefix}/data/cs242/*

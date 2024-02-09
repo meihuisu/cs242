@@ -11,4 +11,4 @@ install:
 	cp -R ./cs242 ${prefix}/data
 	chmod +r ${prefix}/data/config
 	chmod -R og+r ${prefix}/data/cs242
-	chmod +r ${prefix}/data/cs242/*
+	chmod og+x ${prefix}/data/cs242

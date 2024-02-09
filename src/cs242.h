@@ -124,6 +124,8 @@ const char *cs242_version_string = "cs242";
 /** Set to 1 when the model is ready for query. */
 int cs242_is_initialized = 0;
 
+char cs242_data_directory[128];
+
 /** Configuration parameters. */
 cs242_configuration_t *cs242_configuration;
 

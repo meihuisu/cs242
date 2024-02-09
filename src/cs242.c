@@ -37,9 +37,8 @@ int cs242_init(const char *dir, const char *label) {
     // Initialize variables.
     cs242_configuration = calloc(1, sizeof(cs242_configuration_t));
     cs242_velocity_model = calloc(1, sizeof(cs242_model_t));
-    cs242_vs30_map = calloc(1, sizeof(cs242_vs30_map_config_t));
 
-    cs242_config_string = calloc(cs242_CONFIG_MAX, sizeof(char));
+    cs242_config_string = calloc(CS242_CONFIG_MAX, sizeof(char));
     cs242_config_string[0]='\0';
     cs242_config_sz=0;
 
@@ -49,6 +48,9 @@ int cs242_init(const char *dir, const char *label) {
     // Read the cs242_configuration file.
     if (cs242_read_configuration(configbuf, cs242_configuration) != SUCCESS)
         return FAIL;
+
+    // Set up the iteration directory.
+    sprintf(cs242_data_directory, "%s/model/%s/data/%s/", dir, label, cs242_configuration->model_dir);
 
     // Can we allocate the model, or parts of it, to memory. If so, we do.
     tempVal = cs242_try_reading_model(cs242_velocity_model);
@@ -370,10 +372,6 @@ int cs242_finalize() {
          free(cs242_configuration);
          cs242_configuration=NULL;
     }
-    if (cs242_vs30_map) {
-         free(cs242_vs30_map);
-         cs242_vs30_map=NULL;
-    }
 
     return SUCCESS;
 }
@@ -504,7 +502,7 @@ int cs242_try_reading_model(cs242_model_t *model) {
     FILE *fp;
 
     // Let's see what data we actually have.
-    sprintf(current_file, "%s/vp.dat", cs242_iteration_directory);
+    sprintf(current_file, "%s/vp.dat", cs242_data_directory);
     if (access(current_file, R_OK) == 0) {
         model->vp = malloc(base_malloc);
         if (model->vp != NULL) {
@@ -521,7 +519,7 @@ int cs242_try_reading_model(cs242_model_t *model) {
         file_count++;
     }
 
-    sprintf(current_file, "%s/vs.dat", cs242_iteration_directory);
+    sprintf(current_file, "%s/vs.dat", cs242_data_directory);
     if (access(current_file, R_OK) == 0) {
         model->vs = malloc(base_malloc);
         if (model->vs != NULL) {
@@ -538,7 +536,7 @@ int cs242_try_reading_model(cs242_model_t *model) {
         file_count++;
     }
 
-    sprintf(current_file, "%s/density.dat", cs242_iteration_directory);
+    sprintf(current_file, "%s/density.dat", cs242_data_directory);
     if (access(current_file, R_OK) == 0) {
         model->rho = malloc(base_malloc);
         if (model->rho != NULL) {

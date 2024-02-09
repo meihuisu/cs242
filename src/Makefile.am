@@ -24,7 +24,7 @@ libcs242.so: cs242.o
 	$(CC) -shared $(AM_CCFLAGS) -o libcs242.so $^ $(AM_LDFLAGS)
 
 cs242.o: cs242.c
-	$(CC) -DDYNAMIC_LIBRARY -o $@ -c $^ $(AM_CFLAGS)
+	$(CC) -fPIC -DDYNAMIC_LIBRARY -o $@ -c $^ $(AM_CFLAGS)
 	
 cs242_static.o: cs242.c
 	$(CC) -o $@ -c $^ $(AM_CFLAGS)

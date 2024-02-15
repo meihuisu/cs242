@@ -6,8 +6,8 @@ model_dir = cs242
 model_data_path  = https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/models
 
 # Number of cells in x, y, and z.
-nx = 140
-ny = 140 
+nx = 140 
+ny = 70 
 nz = 60 
 
 # Depth, in meters
@@ -15,18 +15,28 @@ depth = 1200
 depth_interval = 20 
 
 # Corners, in UTM projection.
-top_left_corner_e	= 606118.917513
-top_left_corner_n   	= 4124435.488167
+#-121.838241,37.253310,0
+#-121.814448,37.237001,0
+#-121.828113,37.262752,0
+#-121.804320,37.246441,0
+#
+#lon(-121.838241)lat(37.253310) => utm_e(603123.693099),utm_n(4123409.463672)
+#lon(-121.814448)lat(37.237001) => utm_e(605256.447077),utm_n(4121626.242860)
+#lon(-121.828113)lat(37.262752) => utm_e(604008.906310),utm_n(4124468.090587)
+#lon(-121.804320)lat(37.246441) => utm_e(606141.579119),utm_n(4122684.881493)
 
-bottom_left_corner_e  	= 606116.403203 
-bottom_left_corner_n  	= 4124463.660463
+top_left_corner_e = 603123.693099
+top_left_corner_n = 4123409.463672
 
-top_right_corner_e  	= 604809.965575
-top_right_corner_n	= 4125738.501914
+bottom_left_corner_e  	= 605256.447077
+bottom_left_corner_n  	= 4121626.242860
 
-bottom_right_corner_e 	= 606942.684697 
-bottom_right_corner_n	= 4123955.271938
+top_right_corner_e  	= 604008.906310
+top_right_corner_n	= 4124468.090587
+
+bottom_right_corner_e 	= 606141.579119
+bottom_right_corner_n	= 4122684.881493
 
 # Data Layout Parameters 
-seek_axis = fast-X
-seek_direction = bottom-up
+seek_axis = fast-Y
+seek_direction = top-down

@@ -15,7 +15,6 @@
 #include <unistd.h>
 #include <math.h>
 
-#include "etree.h"
 #include "proj.h"
 
 // Constants
@@ -90,6 +89,10 @@ typedef struct cs242_configuration_t {
 	double bottom_right_corner_n;
 	/** Z interval for the data */
 	double depth_interval;
+        /** The data access seek method, fast-X, or fast-Y */
+        char seek_axis[128];
+        /** The data seek direction, bottom-up, or top-down */
+        char seek_direction[128];
 } cs242_configuration_t;
 
 /** The model structure which points to available portions of the model. */
@@ -116,38 +119,7 @@ typedef struct cs242_model_t {
 	int qs_status;
 } cs242_model_t;
 
-// Constants
-/** The version of the model. */
-const char *cs242_version_string = "cs242";
-
-// Variables
-/** Set to 1 when the model is ready for query. */
-int cs242_is_initialized = 0;
-
-char cs242_data_directory[128];
-
-/** Configuration parameters. */
-cs242_configuration_t *cs242_configuration;
-
-/** Holds pointers to the velocity model data OR indicates it can be read from file. */
-cs242_model_t *cs242_velocity_model;
-
-/** Proj coordinate transformation objects. */
-PJ *cs242_geo2utm = NULL;
-PJ *cs242_geo2aeqd = NULL;
-
-/** The cosine of the rotation angle used to rotate the box and point around the bottom-left corner. */
-double cs242_cos_rotation_angle = 0;
-/** The sine of the rotation angle used to rotate the box and point around the bottom-left corner. */
-double cs242_sin_rotation_angle = 0;
-
-/** The height of this model's region, in meters. */
-double cs242_total_height_m = 0;
-/** The width of this model's region, in meters. */
-double cs242_total_width_m = 0;
-
 // UCVM API Required Functions
-
 #ifdef DYNAMIC_LIBRARY
 
 /** Initializes the model */
@@ -158,11 +130,13 @@ int model_finalize();
 int model_version(char *ver, int len);
 /** Queries the model */
 int model_query(cs242_point_t *points, cs242_properties_t *data, int numpts);
+int model_config(char **config, int *sz);
 
 int (*get_model_init())(const char *, const char *);
 int (*get_model_query())(cs242_point_t *, cs242_properties_t *, int);
 int (*get_model_finalize())();
 int (*get_model_version())(char *, int);
+int (*get_model_config())(char **, int*);
 
 #endif
 
@@ -180,14 +154,13 @@ int cs242_query(cs242_point_t *points, cs242_properties_t *data, int numpts);
 // Non-UCVM Helper Functions
 /** Reads the configuration file. */
 int cs242_read_configuration(char *file, cs242_configuration_t *config);
+int cs242_dump_configuration(cs242_configuration_t *config);
 /** Prints out the error string. */
 void cs242_print_error(char *err);
 /** Retrieves the value at a specified grid point in the model. */
 void cs242_read_properties(int x, int y, int z, cs242_properties_t *data);
 /** Attempts to malloc the model size in memory and read it in. */
 int cs242_try_reading_model(cs242_model_t *model);
-/** Calculates density from Vs. */
-double cs242_calculate_density(double vs);
 
 // Interpolation Functions
 /** Linearly interpolates two cs242_properties_t structures */

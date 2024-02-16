@@ -93,7 +93,7 @@ typedef struct cs242_configuration_t {
         char seek_axis[128];
         /** The data seek direction, bottom-up, or top-down */
         char seek_direction[128];
-        /** trilinear interploation;
+        /** trilinear interploation; */
         int interpolation;
 } cs242_configuration_t;
 

@@ -294,7 +294,7 @@ if(cs242_debug) { fprintf(stderr,"again point_u %lf point_v %lf\n", point_u, poi
             continue;
         }
 
-        if(cs242_configuraiton->interpolation) {
+        if(cs242_configuration->interpolation) {
 
           // Get the X, Y, and Z percentages for the bilinear or trilinear interpolation below.
           double x_interval=(cs242_configuration->nx > 1) ?

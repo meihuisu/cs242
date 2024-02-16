@@ -10,6 +10,8 @@ nx = 140
 ny = 70 
 nz = 60 
 
+interpolation = on
+
 # Depth, in meters
 depth = 1200
 depth_interval = 20 

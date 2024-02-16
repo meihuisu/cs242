@@ -258,30 +258,6 @@ int cs242_query(cs242_point_t *points, cs242_properties_t *data, int numpoints) 
             continue;
         }
 
-/**
-temp_e = points[i].longitude; // * DEG_TO_RAD;
-temp_n = points[i].latitude; // * DEG_TO_RAD;
-
-temp_e *= DEG_TO_RAD;
-temp_n *= DEG_TO_RAD;
-
-to_utm(&temp_e, &temp_n); // rewritten with utm
-
-point_utm_e = temp_e;
-point_utm_n = temp_n;
-
-// Point within rectangle.
-point_utm_n -= cs173_configuration->bottom_left_corner_n;
-point_utm_e -= cs173_configuration->bottom_left_corner_e;
-
-temp_e = point_utm_e;
-temp_n = point_utm_n;
-
-// We need to rotate that point, the number of degrees we calculated above.
-point_utm_e = cs173_cos_rotation_angle * temp_e - cs173_sin_rotation_angle * temp_n;
-point_utm_n = cs173_sin_rotation_angle * temp_e + cs173_cos_rotation_angle * temp_n;
-**/
-
 	// lon,lat,u,v			     
 	to_utm(points[i].longitude, points[i].latitude, &point_u, &point_v);
 
@@ -318,36 +294,41 @@ if(cs242_debug) { fprintf(stderr,"again point_u %lf point_v %lf\n", point_u, poi
             continue;
         }
 
-        // Get the X, Y, and Z percentages for the bilinear or trilinear interpolation below.
-        double x_interval=(cs242_configuration->nx > 1) ?
+        if(cs242_configuraiton->interpolation) {
+
+          // Get the X, Y, and Z percentages for the bilinear or trilinear interpolation below.
+          double x_interval=(cs242_configuration->nx > 1) ?
                      cs242_total_width_m / (cs242_configuration->nx-1):cs242_total_width_m;
-                double y_interval=(cs242_configuration->ny > 1) ?
+          double y_interval=(cs242_configuration->ny > 1) ?
                      cs242_total_height_m / (cs242_configuration->ny-1):cs242_total_height_m;
 
-                x_percent = fmod(point_u, x_interval) / x_interval;
-                y_percent = fmod(point_v, y_interval) / y_interval;
-                z_percent = fmod(points[i].depth, cs242_configuration->depth_interval) / cs242_configuration->depth_interval;
+          x_percent = fmod(point_u, x_interval) / x_interval;
+          y_percent = fmod(point_v, y_interval) / y_interval;
+          z_percent = fmod(points[i].depth, cs242_configuration->depth_interval) / cs242_configuration->depth_interval;
 
-        if (load_z_coord < 1) {
-            // We're below the model boundaries. Bilinearly interpolate the bottom plane and use that value.
-            data[i].vp = -1;
-            data[i].vs = -1;
-            data[i].rho = -1;
-            data[i].qp = -1;
-            data[i].qs = -1;
-            continue;
-        } else {
-            // Read all the surrounding point properties.
-            cs242_read_properties(load_x_coord, load_y_coord, load_z_coord, &(surrounding_points[0]));    // Orgin.
-            cs242_read_properties(load_x_coord + 1, load_y_coord, load_z_coord, &(surrounding_points[1]));    // Orgin + 1x
-            cs242_read_properties(load_x_coord, load_y_coord + 1, load_z_coord, &(surrounding_points[2]));    // Orgin + 1y
-            cs242_read_properties(load_x_coord + 1, load_y_coord + 1, load_z_coord, &(surrounding_points[3]));    // Orgin + x + y, forms top plane.
-            cs242_read_properties(load_x_coord, load_y_coord, load_z_coord - 1, &(surrounding_points[4]));    // Bottom plane origin
-            cs242_read_properties(load_x_coord + 1, load_y_coord, load_z_coord - 1, &(surrounding_points[5]));    // +1x
-            cs242_read_properties(load_x_coord, load_y_coord + 1, load_z_coord - 1, &(surrounding_points[6]));    // +1y
-            cs242_read_properties(load_x_coord + 1, load_y_coord + 1, load_z_coord - 1, &(surrounding_points[7]));    // +x +y, forms bottom plane.
-
-            cs242_trilinear_interpolation(x_percent, y_percent, z_percent, surrounding_points, &(data[i]));
+          if (load_z_coord < 1) {
+              // We're below the model boundaries. Bilinearly interpolate the bottom plane and use that value.
+              data[i].vp = -1;
+              data[i].vs = -1;
+              data[i].rho = -1;
+              data[i].qp = -1;
+              data[i].qs = -1;
+              continue;
+          } else {
+              // Read all the surrounding point properties.
+              cs242_read_properties(load_x_coord, load_y_coord, load_z_coord, &(surrounding_points[0]));    // Orgin.
+              cs242_read_properties(load_x_coord + 1, load_y_coord, load_z_coord, &(surrounding_points[1]));    // Orgin + 1x
+              cs242_read_properties(load_x_coord, load_y_coord + 1, load_z_coord, &(surrounding_points[2]));    // Orgin + 1y
+              cs242_read_properties(load_x_coord + 1, load_y_coord + 1, load_z_coord, &(surrounding_points[3]));    // Orgin + x + y, forms top plane.
+              cs242_read_properties(load_x_coord, load_y_coord, load_z_coord - 1, &(surrounding_points[4]));    // Bottom plane origin
+              cs242_read_properties(load_x_coord + 1, load_y_coord, load_z_coord - 1, &(surrounding_points[5]));    // +1x
+              cs242_read_properties(load_x_coord, load_y_coord + 1, load_z_coord - 1, &(surrounding_points[6]));    // +1y
+              cs242_read_properties(load_x_coord + 1, load_y_coord + 1, load_z_coord - 1, &(surrounding_points[7]));    // +x +y, forms bottom plane.
+  
+              cs242_trilinear_interpolation(x_percent, y_percent, z_percent, surrounding_points, &(data[i]));
+          }
+          } else {
+              cs242_read_properties(load_x_coord, load_y_coord, load_z_coord, &(data[i]));    // Orgin.
         }
 
         // Calculate Qp and Qs.
@@ -609,6 +590,10 @@ int cs242_read_configuration(char *file, cs242_configuration_t *config) {
             if (strcmp(key, "depth_interval") == 0) config->depth_interval = atof(value);
             if (strcmp(key, "seek_axis") == 0) sprintf(config->seek_axis, "%s", value);
             if (strcmp(key, "seek_direction") == 0) sprintf(config->seek_direction, "%s", value);
+            if (strcmp(key, "interpolation") == 0) { 
+                config->interpolation=0;
+                if (strcmp(value,"on") == 0) config->interpolation=1;
+i           }
         }
     }
 

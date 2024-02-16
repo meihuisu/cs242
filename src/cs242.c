@@ -593,7 +593,7 @@ int cs242_read_configuration(char *file, cs242_configuration_t *config) {
             if (strcmp(key, "interpolation") == 0) { 
                 config->interpolation=0;
                 if (strcmp(value,"on") == 0) config->interpolation=1;
-i           }
+            }
         }
     }
 

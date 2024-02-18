@@ -261,14 +261,12 @@ int cs242_query(cs242_point_t *points, cs242_properties_t *data, int numpoints) 
 	// lon,lat,u,v			     
 	to_utm(points[i].longitude, points[i].latitude, &point_u, &point_v);
 
-if(cs242_debug) { fprintf(stderr,"lon %lf lat %lf\n", points[i].longitude, points[i].latitude); }
-if(cs242_debug) { fprintf(stderr,"point_u %lf point_v %lf\n", point_u, point_v); }
+//if(cs242_debug) { fprintf(stderr,"lon %lf lat %lf\n", points[i].longitude, points[i].latitude); }
+//if(cs242_debug) { fprintf(stderr,"point_u %lf point_v %lf\n", point_u, point_v); }
 
         // Point within rectangle.
         point_u -= cs242_configuration->bottom_left_corner_e;
         point_v -= cs242_configuration->bottom_left_corner_n;
-
-if(cs242_debug) { fprintf(stderr,"again point_u %lf point_v %lf\n", point_u, point_v); }
 
         // We need to rotate that point, the number of degrees we calculated above.
         point_x = cs242_cos_rotation_angle * point_u - cs242_sin_rotation_angle * point_v;
@@ -282,7 +280,7 @@ if(cs242_debug) { fprintf(stderr,"again point_u %lf point_v %lf\n", point_u, poi
         load_z_coord = (cs242_configuration->depth / cs242_configuration->depth_interval - 1) -
                        floor(points[i].depth / cs242_configuration->depth_interval);
 
-        if(cs242_debug) { fprintf(stderr,"load_x_coord %d load_y_coord %d load_z_coord %d\n", load_x_coord,load_y_coord,load_z_coord); }
+//if(cs242_debug) { fprintf(stderr,"load_x_coord %d load_y_coord %d load_z_coord %d\n", load_x_coord,load_y_coord,load_z_coord); }
 
         // Are we outside the model's X and Y boundaries?
         if (load_x_coord > cs242_configuration->nx - 2 || load_y_coord > cs242_configuration->ny - 2 || load_x_coord < 0 || load_y_coord < 0) {
@@ -369,20 +367,20 @@ void cs242_read_properties(int x, int y, int z, cs242_properties_t *data) {
                  strcmp(cs242_configuration->seek_axis, "fast-Y") == 0 ) { // fast-y,  cs242 
             if(strcmp(cs242_configuration->seek_direction, "bottom-up") == 0) { 
                 location = ((long) z * cs242_configuration->nx * cs242_configuration->ny) + (x * cs242_configuration->ny) + y;
-if(cs242_debug) {fprintf(stderr,"LOCATION==%d(fast-y, bottom-up)\n", location); }
+//if(cs242_debug) {fprintf(stderr,"LOCATION==%d(fast-y, bottom-up)\n", location); }
                 } else { // nz starts from 0 up to nz-1
                     location = ((long)((cs242_configuration->nz -1) - z) * cs242_configuration->nx * cs242_configuration->ny) + (x * cs242_configuration->ny) + y;
-if(cs242_debug) {fprintf(stderr,"LOCATION==%d(fast-y, not bottom-up)\n", location); }
+//if(cs242_debug) {fprintf(stderr,"LOCATION==%d(fast-y, not bottom-up)\n", location); }
             }
         } else {  // fast-X, cca data
             if ( strcmp(cs242_configuration->seek_axis, "fast-x") == 0 ||
                      strcmp(cs242_configuration->seek_axis, "fast-X") == 0 ) { // fast-y,  cs242 
                 if(strcmp(cs242_configuration->seek_direction, "bottom-up") == 0) { 
                     location = ((long)z * cs242_configuration->nx * cs242_configuration->ny) + (y * cs242_configuration->nx) + x;
-if(cs242_debug) {fprintf(stderr,"LOCATION==%d(fast-x, bottom-up)\n", location); }
+//if(cs242_debug) {fprintf(stderr,"LOCATION==%d(fast-x, bottom-up)\n", location); }
                     } else { // bottom-up
                         location = ((long)(cs242_configuration->nz - z) * cs242_configuration->nx * cs242_configuration->ny) + (y * cs242_configuration->nx) + x;
-if(cs242_debug) {fprintf(stderr,"LOCATION==%d(fast-x, not bottom-up)\n", location); }
+//if(cs242_debug) {fprintf(stderr,"LOCATION==%d(fast-x, not bottom-up)\n", location); }
                 }
             }
         }

@@ -38,5 +38,5 @@ cs242_static.o: cs242.c
 
 clean:
 	rm -rf $(TARGETS)
-	rm -rf cs242.o 
+	rm -rf *.o 
 

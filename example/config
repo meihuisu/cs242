@@ -1,0 +1,45 @@
+# UTM Zone
+utm_zone = 10
+
+# Model directory
+model_dir = cs242
+model_data_path  = https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/models
+
+# Number of cells in x, y, and z.
+nx = 140
+ny = 70
+nz = 60
+
+interpolation = off 
+
+# Depth, in meters
+depth = 1200
+depth_interval = 20
+
+# Corners, in UTM projection.
+#  -121.846641 37.214610 (0)
+#  -121.822858 37.198302 (139)
+#  -121.836520 37.224053 (9660)
+#  -121.812736 37.207744 (9799)
+#
+#lon(-121.846641)lat(37.214610) => utm_e(602431.151650),utm_n(4119106.764820)
+#lon(-121.822858)lat(37.198302) => utm_e(604563.917661),utm_n(4117323.453263)
+#lon(-121.836520)lat(37.224053) => utm_e(603316.281869),utm_n(4120165.411540)
+#lon(-121.812736)lat(37.207744) => utm_e(605449.075514),utm_n(4118382.213761)
+
+top_left_corner_e = 602431.151650
+top_left_corner_n = 4119106.764820
+
+bottom_left_corner_e = 604563.917661
+bottom_left_corner_n = 4117323.453263
+
+top_right_corner_e = 603316.281869
+top_right_corner_n = 4120165.411540
+
+bottom_right_corner_e = 605449.075514
+bottom_right_corner_n = 4118382.213761
+
+# Data Layout Parameters 
+seek_axis = fast-Y
+seek_direction = top-down
+

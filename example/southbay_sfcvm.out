@@ -1,0 +1,165 @@
+[0] Using config file southbay_sfcvm.conf
+[0] Configuration:
+	[0] UCVM Model List: sfcvm
+	[0] UCVM Conf file: /var/www/html/UCVM_web_sfcvm/model/UCVM/conf/ucvm.conf
+	[0] Gridtype: 0
+	[0] Querymode: 0
+	[0] Spacing: 20.000000
+	[0] Projection: +proj=utm +datum=WGS84 +zone=10
+		[0] Rotation Angle: -39.900000
+		[0] Origin x0,y0,z0: -121.846800, 37.214600, 0.000000
+		[0] Dimensions: 140, 70, 60
+	[0] Proc Dimensions: 2, 2, 2
+	[0] Vp Min: 0.000000, Vs Min: 0.000000
+	[0] Mesh File: southbay_sfcvm
+	[0] Grid File: southbay_sfcvm.grid
+	[0] Mesh Type: 4
+	[0] Scratch Dir: ./scratch
+Setting up UCVM
+Generating 2D grid
+Converting grid to latlong
+Grid generation complete
+Allocating 9800 grid points
+Mesh dimensions: 140 x 70 x 60
+Reading grid points
+Grid 4 corners:
+  -121.846641 37.214610 (0)
+  -121.822858 37.198302 (139)
+  -121.836520 37.224053 (9660)
+  -121.812736 37.207744 (9799)
+Extracted slice 0 (9800 pnts) in 224.10 ms, 43731.257812 pps
+Wrote slice 0 (9800 pnts) in 0.14 ms, 68531472.000000 pps
+Extracted slice 1 (9800 pnts) in 190.02 ms, 51573.519531 pps
+Wrote slice 1 (9800 pnts) in 0.13 ms, 74809160.000000 pps
+Extracted slice 2 (9800 pnts) in 189.09 ms, 51828.542969 pps
+Wrote slice 2 (9800 pnts) in 0.12 ms, 80327872.000000 pps
+Extracted slice 3 (9800 pnts) in 188.98 ms, 51858.437500 pps
+Wrote slice 3 (9800 pnts) in 0.12 ms, 80991736.000000 pps
+Extracted slice 4 (9800 pnts) in 188.90 ms, 51880.398438 pps
+Wrote slice 4 (9800 pnts) in 0.12 ms, 85217392.000000 pps
+Extracted slice 5 (9800 pnts) in 187.80 ms, 52183.171875 pps
+Wrote slice 5 (9800 pnts) in 0.12 ms, 79032256.000000 pps
+Extracted slice 6 (9800 pnts) in 187.97 ms, 52134.871094 pps
+Wrote slice 6 (9800 pnts) in 0.12 ms, 80327872.000000 pps
+Extracted slice 7 (9800 pnts) in 188.28 ms, 52049.308594 pps
+Wrote slice 7 (9800 pnts) in 0.12 ms, 78400000.000000 pps
+Extracted slice 8 (9800 pnts) in 189.07 ms, 51831.832031 pps
+Wrote slice 8 (9800 pnts) in 0.13 ms, 77165352.000000 pps
+Extracted slice 9 (9800 pnts) in 195.34 ms, 50169.707031 pps
+Wrote slice 9 (9800 pnts) in 0.33 ms, 30061350.000000 pps
+Extracted slice 10 (9800 pnts) in 201.41 ms, 48655.761719 pps
+Wrote slice 10 (9800 pnts) in 0.12 ms, 79674800.000000 pps
+Extracted slice 11 (9800 pnts) in 202.81 ms, 48320.851562 pps
+Wrote slice 11 (9800 pnts) in 0.12 ms, 83760680.000000 pps
+Extracted slice 12 (9800 pnts) in 190.74 ms, 51378.570312 pps
+Wrote slice 12 (9800 pnts) in 0.12 ms, 79674800.000000 pps
+Extracted slice 13 (9800 pnts) in 191.82 ms, 51089.296875 pps
+Wrote slice 13 (9800 pnts) in 0.13 ms, 76562496.000000 pps
+Extracted slice 14 (9800 pnts) in 189.56 ms, 51698.125000 pps
+Wrote slice 14 (9800 pnts) in 0.13 ms, 75968992.000000 pps
+Extracted slice 15 (9800 pnts) in 188.48 ms, 51994.078125 pps
+Wrote slice 15 (9800 pnts) in 0.13 ms, 77165352.000000 pps
+Extracted slice 16 (9800 pnts) in 205.54 ms, 47679.746094 pps
+Wrote slice 16 (9800 pnts) in 0.12 ms, 83050848.000000 pps
+Extracted slice 17 (9800 pnts) in 188.85 ms, 51892.210938 pps
+Wrote slice 17 (9800 pnts) in 0.12 ms, 80327872.000000 pps
+Extracted slice 18 (9800 pnts) in 188.45 ms, 52004.289062 pps
+Wrote slice 18 (9800 pnts) in 0.12 ms, 83050848.000000 pps
+Extracted slice 19 (9800 pnts) in 189.50 ms, 51714.765625 pps
+Wrote slice 19 (9800 pnts) in 0.12 ms, 79674800.000000 pps
+Extracted slice 20 (9800 pnts) in 194.05 ms, 50501.925781 pps
+Wrote slice 20 (9800 pnts) in 0.12 ms, 80327872.000000 pps
+Extracted slice 21 (9800 pnts) in 190.47 ms, 51451.402344 pps
+Wrote slice 21 (9800 pnts) in 0.12 ms, 79674800.000000 pps
+Extracted slice 22 (9800 pnts) in 188.30 ms, 52044.332031 pps
+Wrote slice 22 (9800 pnts) in 0.12 ms, 79032256.000000 pps
+Extracted slice 23 (9800 pnts) in 190.09 ms, 51553.984375 pps
+Wrote slice 23 (9800 pnts) in 0.12 ms, 79674800.000000 pps
+Extracted slice 24 (9800 pnts) in 192.00 ms, 51042.730469 pps
+Wrote slice 24 (9800 pnts) in 0.12 ms, 80991736.000000 pps
+Extracted slice 25 (9800 pnts) in 276140.07 ms, 35.489235 pps
+Wrote slice 25 (9800 pnts) in 0.12 ms, 78400000.000000 pps
+Extracted slice 26 (9800 pnts) in 190.48 ms, 51450.050781 pps
+Wrote slice 26 (9800 pnts) in 0.12 ms, 80327872.000000 pps
+Extracted slice 27 (9800 pnts) in 190.75 ms, 51375.609375 pps
+Wrote slice 27 (9800 pnts) in 0.12 ms, 83050848.000000 pps
+Extracted slice 28 (9800 pnts) in 190.94 ms, 51325.562500 pps
+Wrote slice 28 (9800 pnts) in 0.14 ms, 67586208.000000 pps
+Extracted slice 29 (9800 pnts) in 190.50 ms, 51442.488281 pps
+Wrote slice 29 (9800 pnts) in 0.13 ms, 76562496.000000 pps
+Extracted slice 30 (9800 pnts) in 190.59 ms, 51419.546875 pps
+Wrote slice 30 (9800 pnts) in 0.12 ms, 81666664.000000 pps
+Extracted slice 31 (9800 pnts) in 190.79 ms, 51365.914062 pps
+Wrote slice 31 (9800 pnts) in 0.14 ms, 68531472.000000 pps
+Extracted slice 32 (9800 pnts) in 191.47 ms, 51182.417969 pps
+Wrote slice 32 (9800 pnts) in 0.11 ms, 87500000.000000 pps
+Extracted slice 33 (9800 pnts) in 191.57 ms, 51157.304688 pps
+Wrote slice 33 (9800 pnts) in 0.13 ms, 76562496.000000 pps
+Extracted slice 34 (9800 pnts) in 192.40 ms, 50936.609375 pps
+Wrote slice 34 (9800 pnts) in 0.12 ms, 83760680.000000 pps
+Extracted slice 35 (9800 pnts) in 192.97 ms, 50784.832031 pps
+Wrote slice 35 (9800 pnts) in 0.13 ms, 77777776.000000 pps
+Extracted slice 36 (9800 pnts) in 190.43 ms, 51463.289062 pps
+Wrote slice 36 (9800 pnts) in 0.13 ms, 77777776.000000 pps
+Extracted slice 37 (9800 pnts) in 190.45 ms, 51457.886719 pps
+Wrote slice 37 (9800 pnts) in 0.12 ms, 83050848.000000 pps
+Extracted slice 38 (9800 pnts) in 190.91 ms, 51331.746094 pps
+Wrote slice 38 (9800 pnts) in 0.12 ms, 81666664.000000 pps
+Extracted slice 39 (9800 pnts) in 191.53 ms, 51166.382812 pps
+Wrote slice 39 (9800 pnts) in 0.30 ms, 32666666.000000 pps
+Extracted slice 40 (9800 pnts) in 191.11 ms, 51279.367188 pps
+Wrote slice 40 (9800 pnts) in 0.12 ms, 78400000.000000 pps
+Extracted slice 41 (9800 pnts) in 190.34 ms, 51486.000000 pps
+Wrote slice 41 (9800 pnts) in 0.12 ms, 82352944.000000 pps
+Extracted slice 42 (9800 pnts) in 204.56 ms, 47908.640625 pps
+Wrote slice 42 (9800 pnts) in 0.12 ms, 85217392.000000 pps
+Extracted slice 43 (9800 pnts) in 205.01 ms, 47802.078125 pps
+Wrote slice 43 (9800 pnts) in 0.11 ms, 87500000.000000 pps
+Extracted slice 44 (9800 pnts) in 216.38 ms, 45290.273438 pps
+Wrote slice 44 (9800 pnts) in 0.12 ms, 85217392.000000 pps
+Extracted slice 45 (9800 pnts) in 212.56 ms, 46105.062500 pps
+Wrote slice 45 (9800 pnts) in 0.49 ms, 19918700.000000 pps
+Extracted slice 46 (9800 pnts) in 208.64 ms, 46971.308594 pps
+Wrote slice 46 (9800 pnts) in 0.12 ms, 81666664.000000 pps
+Extracted slice 47 (9800 pnts) in 206.86 ms, 47375.035156 pps
+Wrote slice 47 (9800 pnts) in 0.12 ms, 79674800.000000 pps
+Extracted slice 48 (9800 pnts) in 206.99 ms, 47346.199219 pps
+Wrote slice 48 (9800 pnts) in 0.11 ms, 91588784.000000 pps
+Extracted slice 49 (9800 pnts) in 191.08 ms, 51287.417969 pps
+Wrote slice 49 (9800 pnts) in 0.12 ms, 79032256.000000 pps
+Extracted slice 50 (9800 pnts) in 209.13 ms, 46861.699219 pps
+Wrote slice 50 (9800 pnts) in 0.13 ms, 75384616.000000 pps
+Extracted slice 51 (9800 pnts) in 219.53 ms, 44640.621094 pps
+Wrote slice 51 (9800 pnts) in 0.11 ms, 86725664.000000 pps
+Extracted slice 52 (9800 pnts) in 209.71 ms, 46731.421875 pps
+Wrote slice 52 (9800 pnts) in 0.12 ms, 83050848.000000 pps
+Extracted slice 53 (9800 pnts) in 211.01 ms, 46443.296875 pps
+Wrote slice 53 (9800 pnts) in 0.12 ms, 85217392.000000 pps
+Extracted slice 54 (9800 pnts) in 208.66 ms, 46966.808594 pps
+Wrote slice 54 (9800 pnts) in 0.11 ms, 85964912.000000 pps
+Extracted slice 55 (9800 pnts) in 209.28 ms, 46826.992188 pps
+Wrote slice 55 (9800 pnts) in 0.11 ms, 87500000.000000 pps
+Extracted slice 56 (9800 pnts) in 205.78 ms, 47623.906250 pps
+Wrote slice 56 (9800 pnts) in 0.14 ms, 68531472.000000 pps
+Extracted slice 57 (9800 pnts) in 204.07 ms, 48022.972656 pps
+Wrote slice 57 (9800 pnts) in 0.21 ms, 46226416.000000 pps
+Extracted slice 58 (9800 pnts) in 210.15 ms, 46633.355469 pps
+Wrote slice 58 (9800 pnts) in 0.11 ms, 87500000.000000 pps
+Extracted slice 59 (9800 pnts) in 207.77 ms, 47167.769531 pps
+Wrote slice 59 (9800 pnts) in 0.12 ms, 83050848.000000 pps
+Extracted 588000 points
+Max Vp: 4712.325195 at
+	i,j,k : 139, 0, 59
+Max Vs: 2821.661865 at
+	i,j,k : 139, 0, 59
+Max Rho: 2668.274658 at
+	i,j,k : 53, 0, 0
+Min Vp: 744.276428 at
+	i,j,k : 3, 69, 0
+Min Vs: 85.587601 at
+	i,j,k : 3, 69, 0
+Min Rho: 1612.807617 at
+	i,j,k : 3, 69, 0
+Min Ratio: 1.670053 at
+	i,j,k : 139, 0, 59
+Done.

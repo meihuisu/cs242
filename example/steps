@@ -1,0 +1,20 @@
+
+=========
+
+ucvm2mesh -f southbay_sfcvm.conf >& southbay_sfcvm.out
+
+grid4corners southbay_sfcvm.grid 140 70
+  'data_in'  <= latlons of 4 corners
+
+latlon2utm 10 < data_in
+  cp southbay_sfcvm_vp vp.dat 
+  cp southbay_sfcvm_vs vs.dat 
+  cp southbay_sfcvm_rho rho.dat 
+
+mesh_translate 1 fast-Y 140 70 60 vs.dat 
+mesh_translate 1 fast-Y 140 70 60 vp.dat 
+mesh_translate 1 fast-Y 140 70 60 rho.dat 
+
+=========
+
+'config' file is the model data/config

@@ -1,42 +1,45 @@
-# UTM Zone -- sfcvm
+# UTM Zone
 utm_zone = 10
 
-# Model directory, for 6 iterations
+# Model directory
 model_dir = cs242
 model_data_path  = https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/models
 
 # Number of cells in x, y, and z.
-nx = 140 
-ny = 70 
-nz = 60 
+nx = 140
+ny = 70
+nz = 60
 
-interpolation = on
+interpolation = off 
 
 # Depth, in meters
 depth = 1200
-depth_interval = 20 
+depth_interval = 20
 
 # Corners, in UTM projection.
-#  -122.138240 37.788810
-#  -122.114212 37.772560
-#  -122.128075 37.798277
-#  -122.104047 37.782025
+#  -121.846641 37.214610 (0)
+#  -121.822858 37.198302 (139)
+#  -121.836520 37.224053 (9660)
+#  -121.812736 37.207744 (9799)
 #
-#lon(-122.138240)lat(37.788810) => utm_e(575974.065278),utm_n(4182536.760304)
-#lon(-122.114212)lat(37.772560) => utm_e(578106.839027),utm_n(4180753.605037)
-#lon(-122.128075)lat(37.798277) => utm_e(576859.285161),utm_n(4183595.459888)
-#lon(-122.104047)lat(37.782025) => utm_e(578991.992349),utm_n(4181812.310410)
+#lon(-121.846641)lat(37.214610) => utm_e(602431.151650),utm_n(4119106.764820)
+#lon(-121.822858)lat(37.198302) => utm_e(604563.917661),utm_n(4117323.453263)
+#lon(-121.836520)lat(37.224053) => utm_e(603316.281869),utm_n(4120165.411540)
+#lon(-121.812736)lat(37.207744) => utm_e(605449.075514),utm_n(4118382.213761)
 
+top_left_corner_e = 602431.151650
+top_left_corner_n = 4119106.764820
 
-top_left_corner_e = 575974.065278
-top_left_corner_n = 4182536.760304
-bottom_left_corner_e = 578106.839027
-bottom_left_corner_n = 4180753.605037
-top_right_corner_e = 576859.285161
-top_right_corner_n = 4183595.459888
-bottom_right_corner_e = 578991.992349
-bottom_right_corner_n = 4181812.310410
+bottom_left_corner_e = 604563.917661
+bottom_left_corner_n = 4117323.453263
+
+top_right_corner_e = 603316.281869
+top_right_corner_n = 4120165.411540
+
+bottom_right_corner_e = 605449.075514
+bottom_right_corner_n = 4118382.213761
 
 # Data Layout Parameters 
 seek_axis = fast-Y
 seek_direction = top-down
+

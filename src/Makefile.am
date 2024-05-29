@@ -1,11 +1,11 @@
 # Autoconf/automake file
 
 # General compiler/linker flags
-AM_CFLAGS = ${CFLAGS} ${ETREE_INCLUDES} ${PROJ_INCLUDES}
-AM_LDFLAGS = ${LDFLAGS} ${ETREE_LDFLAGS} ${PROJ_LDFLAGS}
+AM_CFLAGS = ${CFLAGS} ${PROJ_INCLUDES}
+AM_LDFLAGS = ${LDFLAGS} ${PROJ_LDFLAGS}
 
 
-TARGETS = libcs242.a libcs242.so latlon2utm
+TARGETS = libcs242.a libcs242.so 
 
 all: $(TARGETS)
 
@@ -17,9 +17,6 @@ install:
 	cp libcs242.a ${prefix}/lib
 	cp cs242.h ${prefix}/include
 
-latlon2utm: latlon2utm.o
-	$(CC) -o $@ $^ $(AM_LDFLAGS)
-
 libcs242.a: cs242_static.o
 	$(AR) rcs $@ $^
 
@@ -29,9 +26,6 @@ libcs242.so: cs242.o
 cs242.o: cs242.c
 	$(CC) -fPIC -DDYNAMIC_LIBRARY -o $@ -c $^ $(AM_CFLAGS)
 
-latlon2utm.o: latlon2utm.c
-	$(CC) -fPIC -DDYNAMIC_LIBRARY -o $@ -c $^ $(AM_CFLAGS)
-	
 cs242_static.o: cs242.c
 	$(CC) -o $@ -c $^ $(AM_CFLAGS)
 	

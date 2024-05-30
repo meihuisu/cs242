@@ -282,8 +282,8 @@ int cs242_query(cs242_point_t *points, cs242_properties_t *data, int numpoints) 
 
 //if(cs242_debug) { fprintf(stderr,"  load_x_coord %d load_y_coord %d load_z_coord %d\n", load_x_coord,load_y_coord,load_z_coord); }
 
-        // Are we outside the model's X and Y boundaries?
-        if (load_x_coord > cs242_configuration->nx - 2 || load_y_coord > cs242_configuration->ny - 2 || load_x_coord < 0 || load_y_coord < 0) {
+        // Are we outside the model's X, Y and Z boundaries?
+        if (load_x_coord > cs242_configuration->nx - 2 || load_y_coord > cs242_configuration->ny - 2 || load_x_coord < 0 || load_y_coord < 0 || load_z_coord < 0) {
             data[i].vp = -1;
             data[i].vs = -1;
             data[i].rho = -1;
@@ -305,7 +305,6 @@ int cs242_query(cs242_point_t *points, cs242_properties_t *data, int numpoints) 
           z_percent = fmod(points[i].depth, cs242_configuration->depth_interval) / cs242_configuration->depth_interval;
 
           if (load_z_coord < 1) {
-              // We're below the model boundaries. Bilinearly interpolate the bottom plane and use that value.
               data[i].vp = -1;
               data[i].vs = -1;
               data[i].rho = -1;
